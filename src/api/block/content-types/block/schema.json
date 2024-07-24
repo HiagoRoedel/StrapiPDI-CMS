@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blocks",
+  "info": {
+    "singularName": "block",
+    "pluralName": "blocks",
+    "displayName": "Blocks"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "localidade": {
+      "type": "string"
+    },
+    "titleBlock": {
+      "type": "string"
+    },
+    "descriptionBlock": {
+      "type": "string"
+    },
+    "imageBlock": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
