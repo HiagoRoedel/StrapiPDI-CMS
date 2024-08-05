@@ -39,9 +39,9 @@
       "default": false,
       "required": true
     },
-    "Thumbnail": {
+    "imageBlog": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images"
@@ -49,16 +49,6 @@
     },
     "Content": {
       "type": "blocks"
-    },
-    "Image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
     }
   }
 }

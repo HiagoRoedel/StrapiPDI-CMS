@@ -794,6 +794,7 @@ export interface ApiBlockBlock extends Schema.CollectionType {
     singularName: 'block';
     pluralName: 'blocks';
     displayName: 'Blocks';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -803,6 +804,7 @@ export interface ApiBlockBlock extends Schema.CollectionType {
     titleBlock: Attribute.String;
     descriptionBlock: Attribute.String;
     imageBlock: Attribute.Media<'images'>;
+    IsFeatured: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -854,9 +856,8 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     isFeatured: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    Thumbnail: Attribute.Media<'images', true>;
+    imageBlog: Attribute.Media<'images'>;
     Content: Attribute.Blocks;
-    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -927,6 +928,80 @@ export interface ApiDestaqueDestaque extends Schema.CollectionType {
   };
 }
 
+export interface ApiPrincipalPrincipal extends Schema.CollectionType {
+  collectionName: 'principals';
+  info: {
+    singularName: 'principal';
+    pluralName: 'principals';
+    displayName: 'Principal';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titleDestaque: Attribute.String;
+    spanDestaque: Attribute.String;
+    categoriaInformacao: Attribute.String & Attribute.Required;
+    titleCard: Attribute.String & Attribute.Required;
+    spanCard: Attribute.String;
+    imageCards: Attribute.Media<'images'> & Attribute.Required;
+    Content: Attribute.RichText;
+    spanPage: Attribute.Text;
+    ContentTypeCard: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::principal.principal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::principal.principal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSliderSlider extends Schema.CollectionType {
+  collectionName: 'sliders';
+  info: {
+    singularName: 'slider';
+    pluralName: 'sliders';
+    displayName: 'Slider';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.String;
+    imageCategory: Attribute.Media<'images'>;
+    titleCategory: Attribute.String;
+    spanCategory: Attribute.String;
+    IsFeatured: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::slider.slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::slider.slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -949,6 +1024,8 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::card.card': ApiCardCard;
       'api::destaque.destaque': ApiDestaqueDestaque;
+      'api::principal.principal': ApiPrincipalPrincipal;
+      'api::slider.slider': ApiSliderSlider;
     }
   }
 }

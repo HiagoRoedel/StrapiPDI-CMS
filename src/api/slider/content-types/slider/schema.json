@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "blocks",
+  "collectionName": "sliders",
   "info": {
-    "singularName": "block",
-    "pluralName": "blocks",
-    "displayName": "Blocks",
+    "singularName": "slider",
+    "pluralName": "sliders",
+    "displayName": "Slider",
     "description": ""
   },
   "options": {
@@ -12,22 +12,22 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "localidade": {
+    "category": {
       "type": "string"
     },
-    "titleBlock": {
-      "type": "string"
-    },
-    "descriptionBlock": {
-      "type": "string"
-    },
-    "imageBlock": {
+    "imageCategory": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
         "images"
       ]
+    },
+    "titleCategory": {
+      "type": "string"
+    },
+    "spanCategory": {
+      "type": "string"
     },
     "IsFeatured": {
       "type": "boolean"
