@@ -4,7 +4,7 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "Blogs",
+    "displayName": "Componentes",
     "description": ""
   },
   "options": {
@@ -47,7 +47,7 @@
         "images"
       ]
     },
-    "Content": {
+    "ContentComponents": {
       "type": "blocks"
     }
   }

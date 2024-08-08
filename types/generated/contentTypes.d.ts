@@ -788,47 +788,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiBlockBlock extends Schema.CollectionType {
-  collectionName: 'blocks';
-  info: {
-    singularName: 'block';
-    pluralName: 'blocks';
-    displayName: 'Blocks';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    localidade: Attribute.String;
-    titleBlock: Attribute.String;
-    descriptionBlock: Attribute.String;
-    imageBlock: Attribute.Media<'images'>;
-    IsFeatured: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::block.block',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::block.block',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiBlogBlog extends Schema.CollectionType {
   collectionName: 'blogs';
   info: {
     singularName: 'blog';
     pluralName: 'blogs';
-    displayName: 'Blogs';
+    displayName: 'Componentes';
     description: '';
   };
   options: {
@@ -857,73 +822,13 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<false>;
     imageBlog: Attribute.Media<'images'>;
-    Content: Attribute.Blocks;
+    ContentComponents: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCardCard extends Schema.CollectionType {
-  collectionName: 'cards';
-  info: {
-    singularName: 'card';
-    pluralName: 'cards';
-    displayName: 'Cards';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    localidade: Attribute.String & Attribute.Required;
-    titleCard: Attribute.String & Attribute.Required;
-    descriptionCard: Attribute.Text;
-    imageCard: Attribute.Media<'images'>;
-    IsFeatured: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDestaqueDestaque extends Schema.CollectionType {
-  collectionName: 'destaques';
-  info: {
-    singularName: 'destaque';
-    pluralName: 'destaques';
-    displayName: 'Destaques';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    destaque: Attribute.String;
-    descricaoDestaque: Attribute.Text;
-    isFeatured: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::destaque.destaque',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::destaque.destaque',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -942,13 +847,12 @@ export interface ApiPrincipalPrincipal extends Schema.CollectionType {
   attributes: {
     titleDestaque: Attribute.String;
     spanDestaque: Attribute.String;
-    categoriaInformacao: Attribute.String & Attribute.Required;
-    titleCard: Attribute.String & Attribute.Required;
+    categoriaInformacao: Attribute.String;
+    titleCard: Attribute.String;
     spanCard: Attribute.String;
-    imageCards: Attribute.Media<'images'> & Attribute.Required;
-    Content: Attribute.RichText;
+    imageCards: Attribute.Media<'images'>;
     spanPage: Attribute.Text;
-    ContentTypeCard: Attribute.Blocks;
+    Content: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -984,6 +888,7 @@ export interface ApiSliderSlider extends Schema.CollectionType {
     titleCategory: Attribute.String;
     spanCategory: Attribute.String;
     IsFeatured: Attribute.Boolean;
+    SliderContent: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1020,10 +925,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::block.block': ApiBlockBlock;
       'api::blog.blog': ApiBlogBlog;
-      'api::card.card': ApiCardCard;
-      'api::destaque.destaque': ApiDestaqueDestaque;
       'api::principal.principal': ApiPrincipalPrincipal;
       'api::slider.slider': ApiSliderSlider;
     }

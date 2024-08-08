@@ -22,11 +22,11 @@
     },
     "categoriaInformacao": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "titleCard": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "spanCard": {
       "type": "string"
@@ -34,18 +34,15 @@
     "imageCards": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
     },
-    "Content": {
-      "type": "richtext"
-    },
     "spanPage": {
       "type": "text"
     },
-    "ContentTypeCard": {
+    "Content": {
       "type": "blocks"
     }
   }
